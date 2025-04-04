@@ -1,0 +1,14 @@
+services:
+  docker-monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker-monitor
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Docker socket access (read-only)
+      - ./config.json:/app/config.json:ro             # Configuration file
+      - ./logs:/app/logs                              # Logs directory
+    environment:
+      - CONFIG_PATH=/app/config.json
+      - LOG_LEVEL=INFO                                # Set to DEBUG for verbose logging
