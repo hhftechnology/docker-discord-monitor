@@ -1,0 +1,56 @@
+{
+  "webhook_url": "YOUR_WEBHOOK_URL",
+  "events": {
+    "start": {
+      "title": "🚀 Container Started: {name}",
+      "description": "The container '{name}' has started successfully.",
+      "color": 3066993,
+      "footer": "Container monitoring by Docker Monitor",
+      "custom_fields": [
+        {
+          "name": "Container ID",
+          "value": "{id}",
+          "inline": true
+        }
+      ]
+    },
+    "restart": {
+      "title": "🔄 Container Restarted: {name}",
+      "description": "The container '{name}' has been restarted.",
+      "color": 15844367
+    },
+    "stop": {
+      "title": "🛑 Container Stopped: {name}",
+      "description": "The container '{name}' has been stopped.",
+      "color": 15158332
+    },
+    "die": {
+      "title": "💀 Container Died: {name}",
+      "description": "The container '{name}' has stopped working.",
+      "color": 10038562
+    },
+    "health_status": {
+      "title": "❗ Health Status Changed: {name}",
+      "description": "The container '{name}' health status has changed.",
+      "color": 16740862
+    }
+  },
+  "container_filters": {
+    "include_names": ["important", "web", "db"],
+    "exclude_names": ["temp", "test"],
+    "labels": {
+      "monitor": "true"
+    }
+  },
+  "rate_limit": {
+    "enabled": true,
+    "max_events": 5,
+    "time_window": 60
+  },
+  "monitor_resources": true,
+  "resource_check_interval": 300,
+  "resource_thresholds": {
+    "cpu_percent": 80,
+    "memory_percent": 85
+  }
+}
