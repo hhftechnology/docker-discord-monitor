@@ -43,7 +43,7 @@ A Docker container monitoring tool that sends notifications to Discord when cont
 Build and run the container using Docker Compose:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 Or manually with Docker:
